@@ -1,8 +1,10 @@
 package task.flapKap.service.impl;
 
 import jakarta.transaction.Transactional;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import task.flapKap.dto.DepositRequest;
+import task.flapKap.dto.ProductDto;
 import task.flapKap.dto.PurchaseResponse;
 import task.flapKap.exception.ApiError;
 import task.flapKap.model.Product;
@@ -21,10 +23,12 @@ public class VendingMachineServiceImpl implements VendingMachineService {
 
     private final UserService userService;
     private final ProductService productService;
+    private final ModelMapper modelMapper;
 
-    public VendingMachineServiceImpl(UserService userService, ProductService productService) {
+    public VendingMachineServiceImpl(UserService userService, ProductService productService, ModelMapper modelMapper) {
         this.userService = userService;
         this.productService = productService;
+        this.modelMapper = modelMapper;
     }
 
     @Transactional
@@ -42,6 +46,9 @@ public class VendingMachineServiceImpl implements VendingMachineService {
     public PurchaseResponse buyProducts(Long productId, int amount, User user) {
         Product product = productService.getById(productId);
 
+        if(product == null) {
+            throw ApiError.notFound("product not found!");
+        }
         long totalCost = product.getCost() * amount;
         if(user.getDeposit() < totalCost) {
             throw ApiError.badRequest("Insufficient funds");
@@ -61,7 +68,9 @@ public class VendingMachineServiceImpl implements VendingMachineService {
         long change = user.getDeposit();
         Map<String, Long> changeDetails = calculateChange(change);
 
-        return new PurchaseResponse(totalCost, amount, changeDetails);
+        ProductDto productDto = modelMapper.map(product, ProductDto.class);
+        productDto.setSellerId(user.getId());
+        return new PurchaseResponse(totalCost, productDto, amount, changeDetails);
 
     }
 

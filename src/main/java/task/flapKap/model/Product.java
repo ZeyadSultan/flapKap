@@ -31,10 +31,4 @@ public class Product {
     @JoinColumn(name = "sellerId")
     private User user;
 
-    public Product(int amountAvailable, Long cost, String productName , User user) {
-        this.amountAvailable = amountAvailable;
-        this.cost = cost;
-        this.productName = productName;
-        this.user = user;
-    }
 }

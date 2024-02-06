@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
+    @Transactional
     public String deleteUser(Long userId) {
         productService.deleteProductsOfUser(userId);
         userRepository.deleteById(userId);

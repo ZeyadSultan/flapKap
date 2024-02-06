@@ -32,11 +32,4 @@ public class User {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(nullable = false)
     private Role role;
-
-    public User(String username, String password, Long deposit, Role role) {
-        this.username = username;
-        this.password = password;
-        this.deposit = deposit;
-        this.role = role;
-    }
 }

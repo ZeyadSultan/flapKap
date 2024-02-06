@@ -12,6 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class PurchaseResponse {
     private long totalSpent;
+    private ProductDto productDto;
     private int quantity;
     private Map<String, Long> change;
 }

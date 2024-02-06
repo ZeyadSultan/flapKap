@@ -33,7 +33,7 @@ public class SignupServiceImpl implements SignupService {
         Role savedRole = roleService.getByName(signupRequest.getRole());
 
         if (savedUser != null) {
-            throw ApiError.badRequest("This email already exists, choose another one");
+            throw ApiError.badRequest("This username already exists, choose another one");
         }
 
         User user = modelMapper.map(signupRequest, User.class);
