@@ -18,6 +18,9 @@ INSERT INTO `flapkaptask`.`role` (`id`, `name`) VALUES ('1', 'ROLE_BUYER');
 
 INSERT INTO `flapkaptask`.`role` (`id`, `name`) VALUES ('2', 'ROLE_SELLER');
 
+
+## Examples
+
 ### Example on an endpoint to signup a user
 ![Sign up](https://github.com/ZeyadSultan/flapKap/blob/main/signUpExample.png)
 
