@@ -20,3 +20,7 @@ INSERT INTO `flapkaptask`.`role` (`id`, `name`) VALUES ('2', 'ROLE_SELLER');
 
 ### example on an endpoint to signup a user
 ![Sign up](https://github.com/ZeyadSultan/flapKap/blob/main/signUpExample.png)
+
+### example on an endpoint to create a product and the user is a seller
+![createProductExample](https://github.com/ZeyadSultan/flapKap/blob/main/createProductExample.png)
+
