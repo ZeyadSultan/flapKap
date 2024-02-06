@@ -20,11 +20,12 @@ public class VendingMachineController {
         this.vendingMachineService = vendingMachineService;
     }
 
-    @PostMapping("/{id}")
+    @PostMapping
     @PreAuthorize("hasRole('ROLE_BUYER')")
-    public ResponseEntity<String> deposit(@PathVariable("id") Long userId,
+    public ResponseEntity<String> deposit(Authentication authentication,
                                           @RequestBody DepositRequest depositRequest) {
-        vendingMachineService.depositCoins(userId, depositRequest);
+        User user = AuthenticationUser.get(authentication);
+        vendingMachineService.depositCoins(user, depositRequest);
         return ResponseEntity.ok("Coins deposited successfully!");
     }
 

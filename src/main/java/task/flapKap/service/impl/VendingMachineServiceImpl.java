@@ -33,8 +33,7 @@ public class VendingMachineServiceImpl implements VendingMachineService {
 
     @Transactional
     @Override
-    public void depositCoins(Long userId, DepositRequest depositRequest) {
-        User user = userService.getById(userId);
+    public void depositCoins( User user, DepositRequest depositRequest) {
         validateDepositCoins(depositRequest.getCoins());
         long totalDeposit = calculateTotalDeposit(depositRequest.getCoins());
         user.setDeposit(user.getDeposit() + totalDeposit);

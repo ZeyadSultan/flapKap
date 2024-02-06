@@ -9,7 +9,7 @@ import java.util.Map;
 
 public interface VendingMachineService {
 
-    public void depositCoins(Long userId, DepositRequest depositRequest);
+    public void depositCoins(User user, DepositRequest depositRequest);
     public PurchaseResponse buyProducts(Long productId, int amount, User user);
     public void resetDeposit(User user);
 }

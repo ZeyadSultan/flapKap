@@ -28,7 +28,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final UserDetailsService userDetailsService;
     private final ObjectMapper objectMapper;
 
-    private final String[] WHITE_LIST_ENDPOINTS = new String[]{"/api/login/**", "/api/signup/**", "/api/roles/**"};
+    private final String[] WHITE_LIST_ENDPOINTS = new String[]{"/api/login/**", "/api/signup/**"};
 
     public JwtAuthenticationFilter(JwtUtil jwtUtil, UserDetailsService userDetailsService, ObjectMapper objectMapper) {
         this.jwtUtil = jwtUtil;
