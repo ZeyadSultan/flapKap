@@ -5,19 +5,25 @@
 ### Second:
 - open your project in intellij or your preferred ide
 
-### Third:
+### Third without Docker:
 - Create database on your machine and set the database values in the application.properties
-
-### Fourth:
 - Run the application
-
-### Fifth:
 - Insert the two roles in your database before any calling to any api
-
 INSERT INTO `flapkaptask`.`role` (`id`, `name`) VALUES ('1', 'ROLE_BUYER');
 
 INSERT INTO `flapkaptask`.`role` (`id`, `name`) VALUES ('2', 'ROLE_SELLER');
 
+
+### Third with docker
+- open the terminal and run those commands
+- cd to the project directory
+- docker-compose up -d
+- docker exec -it postgres bash
+- psql -U (username) zeyad
+- CREATE DATABASE flapkap;
+- \c flapkap
+- INSERT INTO role (id,name) VALUES (1,'ROLE_BUYER');
+- INSERT INTO role (id,name) VALUES (2,'ROLE_SELLER');
 
 ## Examples
 
